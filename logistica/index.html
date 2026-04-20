@@ -1,1 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NicoTrack — Centro de Operaciones Logísticas</title>
+    <meta name="description" content="Sistema de gestión de transporte de carga (TMS). Flota, viajes, tarifación, combustible y app para choferes — en tiempo real, hecho en Argentina.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <!-- ══════════════════════════════════════════════
+         NAVBAR
+         ══════════════════════════════════════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-mark">
+                    <svg viewBox="0 0 36 36" fill="none">
+                        <rect x="2" y="2" width="32" height="32" rx="8" stroke="#22d3ee" stroke-width="1.2" fill="rgba(34,211,238,0.06)"/>
+                        <path d="M8 22 L14 22 L14 14 L22 14 L22 22 L28 22 L28 26 L8 26 Z" fill="#22d3ee"/>
+                        <circle cx="12" cy="26" r="1.8" fill="#05060a" stroke="#22d3ee" stroke-width="1"/>
+                        <circle cx="24" cy="26" r="1.8" fill="#05060a" stroke="#22d3ee" stroke-width="1"/>
+                        <circle cx="26" cy="10" r="1.2" fill="#f5a524"/>
+                    </svg>
+                </span>
+                <span class="logo-text">Nico<span class="accent">Track</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#journey" class="nav-link">La plataforma</a>
+                <a href="#explorer" class="nav-link">Módulos</a>
+                <a href="#metrics" class="nav-link">Operación</a>
+                <a href="#team" class="nav-link">Nosotros</a>
+                <a href="#roadmap" class="nav-link">Roadmap</a>
+                <a href="#contacto" class="nav-link btn-cta">
+                    Solicitar demo
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════════
+         HERO — Command Center
+         ══════════════════════════════════════════════ -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-grid"></div>
+            <div class="hero-radar"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-inner">
+                <!-- LEFT: copy -->
+                <div class="hero-copy">
+                    <div class="hero-live">
+                        <span class="live-dot"></span>
+                        TMS · HECHO EN ARGENTINA · ACTIVO 24/7
+                    </div>
+
+                    <h1 class="hero-title">
+                        <span class="line clip">Centro de</span>
+                        <span class="line clip"><span class="underline">operaciones</span></span>
+                        <span class="line">para tu
+                            <span class="rotator" id="heroRotator" data-words="flota.|carga.|ruta.|red.|viajes.|tarifas.|combustible.|entregas.|choferes.">
+                                <span class="rotator-current">flota.</span>
+                            </span>
+                        </span>
+                    </h1>
+
+                    <p class="hero-sub">
+                        Un sistema TMS construido por especialistas en logística sobre operaciones reales.
+                        <strong>Viajes, flota, tarifación, combustible y app del chofer</strong> — todo integrado, 
+                        en tiempo real, con IA operativa. Y si te falta algo, lo desarrollamos.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#contacto" class="btn btn-primary btn-lg">
+                            Solicitar demo gratuita
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a href="#journey" class="btn btn-ghost btn-lg">
+                            Ver la plataforma
+                        </a>
+                    </div>
+
+                    <div class="hero-kpis" data-counters>
+                        <div class="kpi">
+                            <div class="kpi-label">Módulos</div>
+                            <div class="kpi-val"><span data-count="7">0</span></div>
+                            <div class="kpi-sub">integrados</div>
+                            <canvas class="kpi-sparkline" data-sparkline data-color="#22d3ee"></canvas>
+                        </div>
+                        <div class="kpi">
+                            <div class="kpi-label">Funcionalidades</div>
+                            <div class="kpi-val"><span data-count="100">0</span>+</div>
+                            <div class="kpi-sub">operativas</div>
+                            <canvas class="kpi-sparkline" data-sparkline data-color="#a78bfa"></canvas>
+                        </div>
+                        <div class="kpi">
+                            <div class="kpi-label">Tiempo real</div>
+                            <div class="kpi-val live"><span data-count="24">0</span>/7</div>
+                            <div class="kpi-sub">monitoreo</div>
+                            <canvas class="kpi-sparkline" data-sparkline data-color="#34d399"></canvas>
+                        </div>
+                        <div class="kpi">
+                            <div class="kpi-label">Vehículos</div>
+                            <div class="kpi-val"><span data-count="24">0</span>/7</div>
+                            <div class="kpi-sub">en ruta ahora</div>
+                            <canvas class="kpi-sparkline" data-sparkline data-color="#f5a524"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: live command display -->
+                <div class="hero-cmd">
+                    <div class="hero-cmd-frame">
+                        <div class="cmd-topbar">
+                            <span>nicotrack // live-ops</span>
+                            <span class="tag">ONLINE</span>
+                        </div>
+                        <div class="cmd-body">
+                            <div class="hero-map">
+                                <svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice">
+                                    <defs>
+                                        <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.2"/>
+                                            <stop offset="50%" stop-color="#22d3ee" stop-opacity="1"/>
+                                            <stop offset="100%" stop-color="#6366f1" stop-opacity="0.8"/>
+                                        </linearGradient>
+                                        <filter id="truckGlow">
+                                            <feGaussianBlur stdDeviation="2"/>
+                                            <feComposite in="SourceGraphic" operator="over"/>
+                                        </filter>
+                                    </defs>
+
+                                    <!-- Background grid -->
+                                    <g class="map-grid-lines">
+                                        <line x1="0" y1="40" x2="400" y2="40"/>
+                                        <line x1="0" y1="80" x2="400" y2="80"/>
+                                        <line x1="0" y1="120" x2="400" y2="120"/>
+                                        <line x1="0" y1="160" x2="400" y2="160"/>
+                                        <line x1="0" y1="200" x2="400" y2="200"/>
+                                        <line x1="0" y1="240" x2="400" y2="240"/>
+                                        <line x1="0" y1="280" x2="400" y2="280"/>
+                                        <line x1="40" y1="0" x2="40" y2="340"/>
+                                        <line x1="80" y1="0" x2="80" y2="340"/>
+                                        <line x1="120" y1="0" x2="120" y2="340"/>
+                                        <line x1="160" y1="0" x2="160" y2="340"/>
+                                        <line x1="200" y1="0" x2="200" y2="340"/>
+                                        <line x1="240" y1="0" x2="240" y2="340"/>
+                                        <line x1="280" y1="0" x2="280" y2="340"/>
+                                        <line x1="320" y1="0" x2="320" y2="340"/>
+                                        <line x1="360" y1="0" x2="360" y2="340"/>
+                                    </g>
+
+                                    <!-- Abstract Argentina-ish shape -->
+                                    <path class="map-country-inner" d="M 180 40 L 240 60 L 260 100 L 250 150 L 270 200 L 250 260 L 220 300 L 200 310 L 180 300 L 160 260 L 150 200 L 140 150 L 150 100 L 170 60 Z"/>
+                                    <path class="map-country" d="M 180 40 L 240 60 L 260 100 L 250 150 L 270 200 L 250 260 L 220 300 L 200 310 L 180 300 L 160 260 L 150 200 L 140 150 L 150 100 L 170 60 Z"/>
+
+                                    <!-- Route path (truck travels this) -->
+                                    <path id="routePath" class="map-route-path"
+                                          d="M 200 80 Q 230 120 220 160 T 210 240 Q 200 280 180 290"/>
+
+                                    <!-- Waypoints -->
+                                    <g class="waypoint" transform="translate(200, 80)">
+                                        <circle class="map-dot-ring" r="3"/>
+                                        <circle class="map-dot green" r="4"/>
+                                    </g>
+                                    <g class="waypoint" transform="translate(223, 145)">
+                                        <circle class="map-dot-ring amber" r="3"/>
+                                        <circle class="map-dot amber" r="3.5"/>
+                                    </g>
+                                    <g class="waypoint" transform="translate(213, 220)">
+                                        <circle class="map-dot-ring amber" r="3"/>
+                                        <circle class="map-dot amber" r="3.5"/>
+                                    </g>
+                                    <g class="waypoint" transform="translate(180, 290)">
+                                        <circle class="map-dot-ring" r="3"/>
+                                        <circle class="map-dot" r="4"/>
+                                    </g>
+
+                                    <!-- City labels -->
+                                    <text x="208" y="76" fill="#9aa4b2" font-size="8" font-family="JetBrains Mono">BA</text>
+                                    <text x="232" y="148" fill="#9aa4b2" font-size="8" font-family="JetBrains Mono">ROS</text>
+                                    <text x="222" y="224" fill="#9aa4b2" font-size="8" font-family="JetBrains Mono">MDQ</text>
+                                    <text x="155" y="290" fill="#9aa4b2" font-size="8" font-family="JetBrains Mono">BHI</text>
+
+                                    <!-- Animated truck -->
+                                    <g id="truckGroup">
+                                        <g transform="translate(-7, -4)">
+                                            <rect x="-2" y="0" width="14" height="8" rx="1" fill="#22d3ee"/>
+                                            <rect x="-4" y="1" width="4" height="6" rx="1" fill="#67e8f9"/>
+                                            <circle cx="0" cy="8" r="1.4" fill="#05060a" stroke="#22d3ee" stroke-width="0.6"/>
+                                            <circle cx="9" cy="8" r="1.4" fill="#05060a" stroke="#22d3ee" stroke-width="0.6"/>
+                                        </g>
+                                    </g>
+
+                                    <!-- Scanning line -->
+                                    <line x1="0" y1="0" x2="400" y2="0" stroke="#22d3ee" stroke-width="1" opacity="0.4">
+                                        <animate attributeName="y1" from="0" to="340" dur="4s" repeatCount="indefinite"/>
+                                        <animate attributeName="y2" from="0" to="340" dur="4s" repeatCount="indefinite"/>
+                                    </line>
+                                </svg>
+                            </div>
+
+                            <div class="cmd-readouts">
+                                <div class="readout">
+                                    <div class="readout-label">Velocidad</div>
+                                    <div class="readout-val" id="telSpeed">82<span class="unit">km/h</span></div>
+                                    <div class="bar"><div class="bar-fill" id="telSpeedBar" style="width: 68%"></div></div>
+                                </div>
+                                <div class="readout">
+                                    <div class="readout-label">Combustible</div>
+                                    <div class="readout-val" id="telFuel">68<span class="unit">%</span></div>
+                                    <div class="bar"><div class="bar-fill green" id="telFuelBar" style="width: 68%"></div></div>
+                                </div>
+                                <div class="readout">
+                                    <div class="readout-label">Motor</div>
+                                    <div class="readout-val" id="telTemp">84<span class="unit">°C</span></div>
+                                    <div class="bar"><div class="bar-fill amber" id="telTempBar" style="width: 70%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating callouts -->
+                    <div class="hero-chip top-left">
+                        <span class="ic">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        Remito entregado · MDQ
+                    </div>
+                    <div class="hero-chip mid-right">
+                        <span class="ic" style="background:rgba(245,165,36,0.15); color:#f5a524">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 8v5l3 2" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg>
+                        </span>
+                        VTV vence en 7 días
+                    </div>
+                    <div class="hero-chip bottom-left">
+                        <span class="ic">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16v12H5l-1 4z" stroke-linejoin="round"/></svg>
+                        </span>
+                        OpsPilot · 3 alertas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         MARQUEE — Technology / Ecosystem
+         ══════════════════════════════════════════════ -->
+    <div class="marquee-section">
+        <div class="marquee-label">Construido con tecnología de clase mundial</div>
+        <div class="marquee">
+            <div class="marquee-track">
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg> Gemini AI</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/></svg> React Native</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l10 6v8l-10 6L2 16V8z"/></svg> Node.js</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5"/></svg> PostgreSQL</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4 4 1 6-6-3-6 3 1-6L3 9l6-1z"/></svg> JWT + RBAC</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg> GPS en vivo</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V3H8v4"/></svg> Multi-empresa</span>
+                <!-- duplicated for seamless loop -->
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg> Gemini AI</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/></svg> React Native</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l10 6v8l-10 6L2 16V8z"/></svg> Node.js</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5"/></svg> PostgreSQL</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4 4 1 6-6-3-6 3 1-6L3 9l6-1z"/></svg> JWT + RBAC</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg> GPS en vivo</span>
+                <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V3H8v4"/></svg> Multi-empresa</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         JOURNEY — Scroll-driven truck route
+         ══════════════════════════════════════════════ -->
+    <section class="section journey" id="journey">
+        <div class="container">
+            <div class="section-head centered reveal">
+                <div class="eyebrow">El recorrido</div>
+                <h2 class="section-title">De la orden de carga al <span class="accent">cierre del viaje</span></h2>
+                <p class="section-desc">Desplazá la página y seguí el camión por toda tu operación. Cada parada es un módulo real del sistema trabajando en sincro.</p>
+            </div>
+
+            <div class="journey-stage" id="journeyContainer">
+                <!-- Sticky road visualization -->
+                <div class="journey-road">
+                    <div class="journey-road-inner">
+                        <svg viewBox="0 0 300 500" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                                <linearGradient id="jPathGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#22d3ee"/>
+                                    <stop offset="100%" stop-color="#6366f1"/>
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Background faint path -->
+                            <path d="M 150 40 Q 80 120 160 200 T 100 340 Q 160 440 150 480"
+                                  fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="3" stroke-dasharray="4 6"/>
+
+                            <!-- Animated progress path -->
+                            <path id="journeyPath" d="M 150 40 Q 80 120 160 200 T 100 340 Q 160 440 150 480"
+                                  fill="none" stroke="url(#jPathGrad)" stroke-width="3" stroke-linecap="round"
+                                  style="filter: drop-shadow(0 0 8px rgba(34,211,238,0.5))"/>
+
+                            <!-- Milestones -->
+                            <g class="journey-milestone" transform="translate(150, 40)">
+                                <circle r="14" fill="#05060a" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" class="ms-ring"/>
+                                <text y="4" text-anchor="middle" fill="#9aa4b2" font-size="10" font-family="JetBrains Mono" font-weight="700">01</text>
+                            </g>
+                            <g class="journey-milestone" transform="translate(115, 140)">
+                                <circle r="14" fill="#05060a" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" class="ms-ring"/>
+                                <text y="4" text-anchor="middle" fill="#9aa4b2" font-size="10" font-family="JetBrains Mono" font-weight="700">02</text>
+                            </g>
+                            <g class="journey-milestone" transform="translate(165, 230)">
+                                <circle r="14" fill="#05060a" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" class="ms-ring"/>
+                                <text y="4" text-anchor="middle" fill="#9aa4b2" font-size="10" font-family="JetBrains Mono" font-weight="700">03</text>
+                            </g>
+                            <g class="journey-milestone" transform="translate(110, 340)">
+                                <circle r="14" fill="#05060a" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" class="ms-ring"/>
+                                <text y="4" text-anchor="middle" fill="#9aa4b2" font-size="10" font-family="JetBrains Mono" font-weight="700">04</text>
+                            </g>
+                            <g class="journey-milestone" transform="translate(150, 480)">
+                                <circle r="14" fill="#05060a" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" class="ms-ring"/>
+                                <text y="4" text-anchor="middle" fill="#9aa4b2" font-size="10" font-family="JetBrains Mono" font-weight="700">05</text>
+                            </g>
+
+                            <!-- Traveling truck -->
+                            <g id="journeyTruck">
+                                <g transform="translate(-10, -6)">
+                                    <rect x="-3" y="0" width="18" height="10" rx="1.5" fill="#22d3ee"/>
+                                    <rect x="-6" y="1.5" width="5" height="7" rx="1" fill="#67e8f9"/>
+                                    <circle cx="0" cy="10" r="1.8" fill="#05060a" stroke="#22d3ee" stroke-width="0.8"/>
+                                    <circle cx="12" cy="10" r="1.8" fill="#05060a" stroke="#22d3ee" stroke-width="0.8"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Steps -->
+                <div class="journey-steps">
+                    <div class="journey-step reveal">
+                        <div class="journey-step-idx">PARADA 01 · OPERACIONES</div>
+                        <h3>Se carga un viaje nuevo</h3>
+                        <p>El operador crea el viaje con origen, destino y nodos intermedios. El sistema sugiere la tarifa correcta según cliente, tipo de carga y ruta.</p>
+                        <ul class="journey-bullets">
+                            <li>Recorridos multi-parada con nodos customizables</li>
+                            <li>Matching automático de tarifa comercial</li>
+                            <li>Asignación de vehículo + chofer con validación de disponibilidad</li>
+                        </ul>
+                    </div>
+                    <div class="journey-step reveal">
+                        <div class="journey-step-idx">PARADA 02 · APP DEL CHOFER</div>
+                        <h3>El chofer sale a ruta</h3>
+                        <p>La app móvil nativa muestra el recorrido, estados por nodo y permite cargar remitos con foto. Funciona offline y sincroniza al volver la señal.</p>
+                        <ul class="journey-bullets">
+                            <li>Carga de remitos con captura de imagen</li>
+                            <li>Actualización de odómetro y GPS por nodo</li>
+                            <li>Reporte de novedades e incidencias en vivo</li>
+                        </ul>
+                    </div>
+                    <div class="journey-step reveal">
+                        <div class="journey-step-idx">PARADA 03 · TRACKING EN VIVO</div>
+                        <h3>La base operativa monitorea</h3>
+                        <p>El tablero de monitoreo muestra la posición de toda la flota en tiempo real, con estados por viaje, ETAs y alertas automáticas.</p>
+                        <ul class="journey-bullets">
+                            <li>Mapa en vivo con cada unidad y su estado</li>
+                            <li>Timeline horizontal por viaje con progreso</li>
+                            <li>Alertas automáticas de desviaciones y retrasos</li>
+                        </ul>
+                    </div>
+                    <div class="journey-step reveal">
+                        <div class="journey-step-idx">PARADA 04 · COMBUSTIBLE + CUBIERTAS</div>
+                        <h3>Todo queda registrado</h3>
+                        <p>Cada despacho de gasoil, cada cambio de cubierta, cada servicio preventivo — con evidencia documental, stock controlado y costeo configurable.</p>
+                        <ul class="journey-bullets">
+                            <li>Costeo FIFO, promedio ponderado o precio fijo</li>
+                            <li>Ciclo de vida completo por cubierta y por eje</li>
+                            <li>Alertas preventivas por kilometraje</li>
+                        </ul>
+                    </div>
+                    <div class="journey-step reveal">
+                        <div class="journey-step-idx">PARADA 05 · CIERRE + IA</div>
+                        <h3>Se cierra el viaje y aprende el sistema</h3>
+                        <p>Rendición del chofer, facturación lista para emisión, y OpsPilot (Gemini AI) analiza la operación para sugerir optimizaciones reales.</p>
+                        <ul class="journey-bullets">
+                            <li>Rendición con snapshot inmutable de tarifa</li>
+                            <li>Reportes automáticos para dirección</li>
+                            <li>Recomendaciones IA sobre rutas, consumos y márgenes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         EXPLORER — Interactive module tabs
+         ══════════════════════════════════════════════ -->
+    <section class="section explorer" id="explorer">
+        <div class="container">
+            <div class="section-head centered reveal">
+                <div class="eyebrow">Módulos integrados</div>
+                <h2 class="section-title">Un solo sistema, <span class="accent">toda tu operación</span></h2>
+                <p class="section-desc">Elegí un módulo y explorá la interfaz real. Todo está conectado: los datos fluyen sin duplicación entre viajes, flota, tarifas, combustible y la app del chofer.</p>
+            </div>
+
+            <div class="explorer-layout reveal">
+                <!-- Tab list -->
+                <aside class="explorer-list">
+                    <div class="explorer-list-head">Elegí un módulo</div>
+
+                    <div class="explorer-tab active" data-module="viajes">
+                        <span class="explorer-tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M16 5l5 7-5 7"/></svg></span>
+                        <div class="explorer-tab-info"><h5>Control de Viajes</h5><span class="sub">Timeline · nodos · remitos</span></div>
+                        <span class="explorer-tab-arrow">›</span>
+                    </div>
+                    <div class="explorer-tab" data-module="flota">
+                        <span class="explorer-tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></span>
+                        <div class="explorer-tab-info"><h5>Gestión de Flota</h5><span class="sub">Vehículos · choferes · compliance</span></div>
+                        <span class="explorer-tab-arrow">›</span>
+                    </div>
+                    <div class="explorer-tab" data-module="tarifas">
+                        <span class="explorer-tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+                        <div class="explorer-tab-info"><h5>Tarifación</h5><span class="sub">11 tipos · matching auto</span></div>
+                        <span class="explorer-tab-arrow">›</span>
+                    </div>
+                    <div class="explorer-tab" data-module="combustible">
+                        <span class="explorer-tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v16h10V4H4zM14 10h3l3 3v7h-6"/><circle cx="7" cy="8" r="1" fill="currentColor"/></svg></span>
+                        <div class="explorer-tab-info"><h5>Combustible</h5><span class="sub">FIFO · stock · evidencia</span></div>
+                        <span class="explorer-tab-arrow">›</span>
+                    </div>
+                    <div class="explorer-tab" data-module="cubiertas">
+                        <span class="explorer-tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></span>
+                        <div class="explorer-tab-info"><h5>Cubiertas</h5><span class="sub">Ejes · OT · recapado</span></div>
+                        <span class="explorer-tab-arrow">›</span>
+                    </div>
+                    <div class="explorer-tab" data-module="app">
+                        <span class="explorer-tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+                        <div class="explorer-tab-info"><h5>App del Chofer</h5><span class="sub">iOS · Android · offline</span></div>
+                        <span class="explorer-tab-arrow">›</span>
+                    </div>
+                    <div class="explorer-tab" data-module="dashboard">
+                        <span class="explorer-tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="10" rx="1"/><rect x="13" y="3" width="8" height="6" rx="1"/><rect x="3" y="15" width="18" height="6" rx="1"/></svg></span>
+                        <div class="explorer-tab-info"><h5>Dashboard + OpsPilot</h5><span class="sub">KPIs · IA · alertas</span></div>
+                        <span class="explorer-tab-arrow">›</span>
+                    </div>
+                </aside>
+
+                <!-- Panes -->
+                <div class="explorer-stage">
+
+                    <!-- Viajes -->
+                    <div class="explorer-pane active" data-pane="viajes">
+                        <div class="explorer-pane-head">
+                            <div>
+                                <h3>Control de Viajes</h3>
+                                <p>Ciclo de vida completo: creación, asignación, tracking en vivo y cierre. Nodos customizables con estados independientes.</p>
+                            </div>
+                            <div class="pane-chips">
+                                <span class="pane-chip">Timeline</span>
+                                <span class="pane-chip">Nodos</span>
+                                <span class="pane-chip">Remitos</span>
+                            </div>
+                        </div>
+                        <div class="asset-frame">
+                            <div class="asset-frame-bar">
+                                <div class="dots"><span></span><span></span><span></span></div>
+                                <div class="url">nicotrack.app / viajes / listado</div>
+                            </div>
+                            <div class="asset-frame-body">
+                                <img src="images/trips.jpg" alt="Pantalla de control de viajes">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flota -->
+                    <div class="explorer-pane" data-pane="flota">
+                        <div class="explorer-pane-head">
+                            <div>
+                                <h3>Gestión de Flota</h3>
+                                <p>Vehículos, choferes y documentación con compliance automático. Servicios preventivos con alertas por kilometraje.</p>
+                            </div>
+                            <div class="pane-chips">
+                                <span class="pane-chip">Vehículos</span>
+                                <span class="pane-chip">Choferes</span>
+                                <span class="pane-chip">Compliance</span>
+                            </div>
+                        </div>
+                        <div class="asset-frame">
+                            <div class="asset-frame-bar">
+                                <div class="dots"><span></span><span></span><span></span></div>
+                                <div class="url">nicotrack.app / flota / vehiculos</div>
+                            </div>
+                            <div class="asset-frame-body">
+                                <img src="images/fleet.jpg" alt="Pantalla de gestión de flota">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarifas -->
+                    <div class="explorer-pane" data-pane="tarifas">
+                        <div class="explorer-pane-head">
+                            <div>
+                                <h3>Tarifación Inteligente</h3>
+                                <p>Motor de pricing con 11 tipos de tarifa. El sistema sugiere el precio correcto al abrir un viaje con snapshot inmutable por auditoría.</p>
+                            </div>
+                            <div class="pane-chips">
+                                <span class="pane-chip">11 tipos</span>
+                                <span class="pane-chip">Auto-match</span>
+                                <span class="pane-chip">Snapshot</span>
+                            </div>
+                        </div>
+                        <div class="asset-frame">
+                            <div class="asset-frame-bar">
+                                <div class="dots"><span></span><span></span><span></span></div>
+                                <div class="url">nicotrack.app / tarifas / planes</div>
+                            </div>
+                            <div class="asset-frame-body">
+                                <img src="images/tariff.jpg" alt="Pantalla de tarifación">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Combustible -->
+                    <div class="explorer-pane" data-pane="combustible">
+                        <div class="explorer-pane-head">
+                            <div>
+                                <h3>Control de Combustible</h3>
+                                <p>Despachos internos y cargas externas. Stock de gasoil y urea con alertas. Costeo FIFO, promedio ponderado o precio fijo por empresa.</p>
+                            </div>
+                            <div class="pane-chips">
+                                <span class="pane-chip">FIFO</span>
+                                <span class="pane-chip">Stock</span>
+                                <span class="pane-chip">Evidencia</span>
+                            </div>
+                        </div>
+                        <div class="asset-frame">
+                            <div class="asset-frame-bar">
+                                <div class="dots"><span></span><span></span><span></span></div>
+                                <div class="url">nicotrack.app / combustible / despachos</div>
+                            </div>
+                            <div class="asset-frame-body">
+                                <img src="images/fuel.jpg" alt="Pantalla de combustible">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cubiertas -->
+                    <div class="explorer-pane" data-pane="cubiertas">
+                        <div class="explorer-pane-head">
+                            <div>
+                                <h3>Gestión de Cubiertas</h3>
+                                <p>Auditoría completa del ciclo de vida: montaje, desmontaje, recapado. Órdenes de trabajo por posición de eje.</p>
+                            </div>
+                            <div class="pane-chips">
+                                <span class="pane-chip">Ejes</span>
+                                <span class="pane-chip">OT</span>
+                                <span class="pane-chip">Recapado</span>
+                            </div>
+                        </div>
+                        <div class="asset-frame">
+                            <div class="asset-frame-bar">
+                                <div class="dots"><span></span><span></span><span></span></div>
+                                <div class="url">nicotrack.app / cubiertas / ejes</div>
+                            </div>
+                            <div class="asset-frame-body">
+                                <img src="images/cubiertas.jpg" alt="Pantalla de cubiertas">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App Chofer — video placeholder -->
+                    <div class="explorer-pane" data-pane="app">
+                        <div class="explorer-pane-head">
+                            <div>
+                                <h3>App Móvil del Chofer</h3>
+                                <p>Aplicación nativa (iOS/Android) con sincronización offline. Carga de remitos con foto, GPS, estados por nodo y novedades.</p>
+                            </div>
+                            <div class="pane-chips">
+                                <span class="pane-chip">iOS</span>
+                                <span class="pane-chip">Android</span>
+                                <span class="pane-chip">Offline</span>
+                            </div>
+                        </div>
+                        <div class="asset-frame">
+                            <div class="asset-frame-bar">
+                                <div class="dots"><span></span><span></span><span></span></div>
+                                <div class="url">youtube.com / nicotrack-demo-chofer</div>
+                            </div>
+                            <div class="asset-frame-body">
+                                <!-- ╔══════════════════════════════════════════════════════════╗
+                                     ║ VIDEO PLACEHOLDER — App del Chofer                      ║
+                                     ║ Reemplazar con el iframe de YouTube:                    ║
+                                     ║ <iframe src="https://www.youtube.com/embed/VIDEO_ID"   ║
+                                     ║   width="100%" height="100%" allowfullscreen></iframe>  ║
+                                     ╚══════════════════════════════════════════════════════════╝ -->
+                                <div class="video-placeholder">
+                                    <div class="video-play">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <div class="video-title">Video tutorial — app del chofer · reemplazar con YouTube</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard -->
+                    <div class="explorer-pane" data-pane="dashboard">
+                        <div class="explorer-pane-head">
+                            <div>
+                                <h3>Dashboard + OpsPilot (IA)</h3>
+                                <p>KPIs de toda la operación + agente de IA sobre Gemini que analiza datos, genera reportes y sugiere optimizaciones.</p>
+                            </div>
+                            <div class="pane-chips">
+                                <span class="pane-chip">KPIs</span>
+                                <span class="pane-chip">Alertas</span>
+                                <span class="pane-chip">Gemini AI</span>
+                            </div>
+                        </div>
+
+                        <div class="live-dash" style="margin-bottom: 14px">
+                            <div class="dash-card">
+                                <div class="dash-label">Viajes activos</div>
+                                <div class="dash-val" data-live="42" data-jitter="0.1">42</div>
+                                <div class="dash-delta up">▲ 8% vs ayer</div>
+                            </div>
+                            <div class="dash-card">
+                                <div class="dash-label">Km recorridos hoy</div>
+                                <div class="dash-val" data-live="18420" data-jitter="0.05" data-unit="km">18.420<span class="unit">km</span></div>
+                                <div class="dash-delta up">▲ 3% vs ayer</div>
+                            </div>
+                            <div class="dash-card">
+                                <div class="dash-label">Gasoil consumido</div>
+                                <div class="dash-val" data-live="6840" data-jitter="0.04" data-unit="L">6.840<span class="unit">L</span></div>
+                                <div class="dash-delta down">▼ 2% vs ayer</div>
+                            </div>
+                        </div>
+
+                        <div class="asset-frame">
+                            <div class="asset-frame-bar">
+                                <div class="dots"><span></span><span></span><span></span></div>
+                                <div class="url">nicotrack.app / dashboard</div>
+                            </div>
+                            <div class="asset-frame-body">
+                                <img src="images/dashboard.jpg" alt="Dashboard principal de NicoTrack">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         METRICS BAND
+         ══════════════════════════════════════════════ -->
+    <section class="metrics-band" id="metrics">
+        <div class="container">
+            <div class="metrics-grid reveal" data-counters>
+                <div class="metric">
+                    <div class="metric-val"><span data-count="7">0</span></div>
+                    <div class="metric-label">Módulos integrados</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-val"><span data-count="68">0</span></div>
+                    <div class="metric-label">Permisos granulares (RBAC)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-val"><span data-count="11">0</span></div>
+                    <div class="metric-label">Tipos de tarifación</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-val"><span data-count="100">0</span><span class="unit">%</span></div>
+                    <div class="metric-label">A medida · Hecho en AR</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         SERVICE — El diferencial
+         ══════════════════════════════════════════════ -->
+    <section class="section" id="servicio">
+        <div class="container">
+            <div class="section-head reveal">
+                <div class="eyebrow">El servicio</div>
+                <h2 class="section-title">No es un SaaS más. <span class="accent">Nos contratás a nosotros.</span></h2>
+                <p class="section-desc">Atrás del sistema hay un equipo con experiencia real en logística y desarrollo. Si tu operación necesita algo específico, lo construimos.</p>
+            </div>
+
+            <div class="diff-grid">
+                <div class="diff-card reveal">
+                    <div class="num">01 / IMPLEMENTACIÓN</div>
+                    <h4>Arranque acompañado</h4>
+                    <p>No te dejamos solo con una URL. Configuramos el sistema según tu operación, importamos tus datos y capacitamos a tu equipo hasta que todo funcione.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <div class="num">02 / DESARROLLO</div>
+                    <h4>A medida, en serio</h4>
+                    <p>¿Te falta un reporte, una integración, un módulo? Lo desarrollamos. El sistema crece con tu empresa, no al revés.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <div class="num">03 / SOPORTE</div>
+                    <h4>Hablás con quien lo construyó</h4>
+                    <p>No hay bots ni nivel 1. Si hay un problema en tu operación, lo resuelve quien hizo el módulo — rápido y bien.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         TEAM
+         ══════════════════════════════════════════════ -->
+    <section class="section" id="team">
+        <div class="container">
+            <div class="section-head reveal">
+                <div class="eyebrow">Quiénes somos</div>
+                <h2 class="section-title">Tres especialistas, <span class="accent">un solo sistema.</span></h2>
+                <p class="section-desc">Combinamos experiencia operativa con desarrollo de software. Construimos NicoTrack porque trabajamos en el rubro y ninguna herramienta cubría lo que hacía falta.</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <!-- Avatar placeholder — reemplazar con <img src="images/team/nicolas.jpg"> -->
+                    <div class="team-avatar">NB</div>
+                    <h4>Nicolás Baz</h4>
+                    <div class="team-role">Logística & Operaciones</div>
+                    <p>Más de 10 años en logística de medianas y grandes empresas. Traslada el conocimiento real del negocio al producto.</p>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar">EA</div>
+                    <h4>Exequiel A.</h4>
+                    <div class="team-role">Desarrollo & Arquitectura</div>
+                    <p>Full-stack developer. Diseña e implementa la plataforma. Especializado en sistemas operativos para transporte de carga.</p>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar">ML</div>
+                    <h4>Matías López</h4>
+                    <div class="team-role">Análisis & Soporte</div>
+                    <p>Analista en sistemas con foco en implementación y soporte. Garantiza que la plataforma funcione en cada operación real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         ROADMAP
+         ══════════════════════════════════════════════ -->
+    <section class="section" id="roadmap">
+        <div class="container">
+            <div class="section-head reveal">
+                <div class="eyebrow">Roadmap</div>
+                <h2 class="section-title">Lo que viene: <span class="accent">construyendo el futuro</span></h2>
+                <p class="section-desc">Estas son las funcionalidades que ya estamos desarrollando para llevar tu operación al siguiente nivel.</p>
+            </div>
+
+            <div class="roadmap-grid">
+                <div class="roadmap-card active reveal">
+                    <span class="roadmap-badge now">En desarrollo</span>
+                    <h4>Última Milla</h4>
+                    <p>Módulo completo: asignación automática de entregas, optimización de rutas urbanas, prueba de entrega digital y notificaciones al destinatario.</p>
+                    <div class="roadmap-tags">
+                        <span>Ruteo</span><span>POD digital</span><span>SMS</span><span>Ventanas</span>
+                    </div>
+                </div>
+                <div class="roadmap-card active reveal">
+                    <span class="roadmap-badge now">En desarrollo</span>
+                    <h4>Multi-empresa (multi-tenant)</h4>
+                    <p>Varias empresas transportistas sobre la misma plataforma, con configuración, tarifas y datos aislados.</p>
+                    <div class="roadmap-tags">
+                        <span>Multi-tenant</span><span>Aislamiento</span>
+                    </div>
+                </div>
+                <div class="roadmap-card active reveal">
+                    <span class="roadmap-badge now">En desarrollo</span>
+                    <h4>IA Predictiva (OpsPilot v2)</h4>
+                    <p>Anomalías en consumo, predicción de fallas, ETAs inteligentes y recomendaciones automáticas de optimización.</p>
+                    <div class="roadmap-tags">
+                        <span>Anomalías</span><span>Mantenimiento</span><span>ETA IA</span>
+                    </div>
+                </div>
+                <div class="roadmap-card reveal">
+                    <span class="roadmap-badge later">Planificado</span>
+                    <h4>Integraciones externas</h4>
+                    <p>Conectividad con proveedores de combustible, estaciones de servicio, telepeaje y telemetría vehicular.</p>
+                    <div class="roadmap-tags">
+                        <span>YPF</span><span>Telepeaje</span><span>Telemetría</span>
+                    </div>
+                </div>
+                <div class="roadmap-card reveal">
+                    <span class="roadmap-badge later">Planificado</span>
+                    <h4>Portal del cliente final</h4>
+                    <p>Tus clientes podrán ver el estado de sus envíos, descargar remitos y consultar histórico desde su propio login.</p>
+                    <div class="roadmap-tags">
+                        <span>Self-service</span><span>Tracking público</span>
+                    </div>
+                </div>
+                <div class="roadmap-card reveal">
+                    <span class="roadmap-badge soon">Próximo</span>
+                    <h4>Facturación electrónica</h4>
+                    <p>Generación automática de facturas desde viajes cerrados, integración contable y emisión de comprobantes electrónicos.</p>
+                    <div class="roadmap-tags">
+                        <span>Factura E</span><span>Contabilidad</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         CTA — Contacto
+         ══════════════════════════════════════════════ -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <div class="cta-wrap reveal">
+                <div class="cta-content">
+                    <h2>Agendá una demo y <span class="accent">vemos tu operación juntos</span></h2>
+                    <p>30 minutos. Te mostramos el sistema con datos de ejemplo similares a tu empresa y te decimos si te sirve o no. Sin vuelta.</p>
+                </div>
+                <form class="cta-form" id="ctaForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Empresa</label>
+                            <input type="text" id="company" name="company" placeholder="Razón social o nombre comercial" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+54 9 ...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Contanos brevemente (opcional)</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Tamaño de flota, principales desafíos de tu operación..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-full">
+                        Solicitar demo gratuita
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <p class="cta-note">Sin compromiso · te respondemos en menos de 24hs</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         FOOTER
+         ══════════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <span class="logo-mark">
+                            <svg viewBox="0 0 36 36" fill="none">
+                                <rect x="2" y="2" width="32" height="32" rx="8" stroke="#22d3ee" stroke-width="1.2" fill="rgba(34,211,238,0.06)"/>
+                                <path d="M8 22 L14 22 L14 14 L22 14 L22 22 L28 22 L28 26 L8 26 Z" fill="#22d3ee"/>
+                                <circle cx="12" cy="26" r="1.8" fill="#05060a" stroke="#22d3ee" stroke-width="1"/>
+                                <circle cx="24" cy="26" r="1.8" fill="#05060a" stroke="#22d3ee" stroke-width="1"/>
+                                <circle cx="26" cy="10" r="1.2" fill="#f5a524"/>
+                            </svg>
+                        </span>
+                        <span class="logo-text">Nico<span class="accent">Track</span></span>
+                    </a>
+                    <p>Sistema de gestión de transporte de carga (TMS). Hecho en Argentina por especialistas en logística.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Plataforma</h5>
+                    <a href="#journey">Recorrido</a>
+                    <a href="#explorer">Módulos</a>
+                    <a href="#metrics">Operación</a>
+                    <a href="#roadmap">Roadmap</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Módulos</h5>
+                    <a href="#explorer">Control de viajes</a>
+                    <a href="#explorer">Gestión de flota</a>
+                    <a href="#explorer">Tarifación</a>
+                    <a href="#explorer">Combustible</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Contacto</h5>
+                    <a href="#contacto">Solicitar demo</a>
+                    <a href="mailto:info@nicotrack.app">info@nicotrack.app</a>
+                    <a href="#team">Equipo</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 NicoTrack · Todos los derechos reservados</span>
+                <span>Hecho con ♦ en Argentina</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
